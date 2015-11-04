@@ -9,7 +9,7 @@
 import processing.net.*;
 import processing.serial.*;  //for serial communication to Arduino & HHI Shield
 
-String netBridge_portName = "REPLACE_THIS_WITH_YOUR_SERIAL_PORT_NAME";  //must edit this based on the name of the serial/COM port your Arduino w/ HHI
+String netBridge_portName = "/dev/ttyACM0";  //must edit this based on the name of the serial/COM port your Arduino w/ HHI
 Serial netBridge_serial;
 int netBridge_baud = 9600; //baud rate from the Arduino / HHI
 
@@ -60,8 +60,12 @@ void draw()
     if (thisClient != null) {
       if (thisClient.available() > 0) {
         messageFromClient = thisClient.readString();
+try{        
         messageFromClient = messageFromClient.substring(0, messageFromClient.indexOf("\n"));
-        intensityFromClient = Integer.parseInt(messageFromClient);
+       intensityFromClient = Integer.parseInt(messageFromClient); }
+catch(Exception e){
+}
+  //intensityFromClient -= 24;
         println("mesage from: " + thisClient.ip() + " : " + messageFromClient, 15, textLine);
         if(messageFromClient.indexOf("off") >= 0)
         {

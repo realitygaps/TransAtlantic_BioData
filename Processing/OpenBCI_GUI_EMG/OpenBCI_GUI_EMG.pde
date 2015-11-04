@@ -227,7 +227,7 @@ void setup() {
   
   //try to connect to connect to VPN
   try {
-    c = new Client(this, "25.114.153.225", 12345); // Replace with your server's IP and port
+    c = new Client(this, "localhost", 12345); // Replace with your server's IP and port
   } 
   catch (RuntimeException e) {
     println("Failed to connect to VPN... make sure that it is running: " + e);
@@ -1348,4 +1348,3 @@ void delay(int delay)
 //    )
 //  );
 // }  
-

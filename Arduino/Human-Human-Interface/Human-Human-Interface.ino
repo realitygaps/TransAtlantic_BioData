@@ -77,12 +77,12 @@ void loop() {
   }
 
   SwitchState = digitalRead(SwitchPin);
-  
+  incomingValue = 77;
   if(incomingValue >= 75){
-    SwitchState = HIGH;   //if incoming value from netBridge_receiver.pde is above 75%, trigger TENS
+    SwitchState = LOW;   //if incoming value from netBridge_receiver.pde is above 75%, trigger TENS
   }
   if(incomingValue < 75){
-    SwitchState = LOW;   //if incoming value is below 75%, turn off TENS
+    SwitchState = HIGH;   //if incoming value is below 75%, turn off TENS
   }
   
   //Serial.println(SwitchState);
